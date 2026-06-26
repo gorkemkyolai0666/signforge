@@ -1,0 +1,151 @@
+{
+  "displayName": "SignForge",
+  "projectSlug": "signforge",
+  "tokenKey": "signforge_token",
+  "userKey": "signforge_user",
+  "themeKey": "signforge_theme",
+  "demoEmail": "demo@signforge.com.tr",
+  "companyName": "SignForge Teknoloji A.Ş.",
+  "tagline": "Sözleşme Zekâsı",
+  "meta": {
+    "title": "SignForge — Yapay Zekâ Destekli E-İmza ve Sözleşme Yönetim Platformu",
+    "description": "Belgelerinizi dijital olarak imzalayın, sözleşme risklerini analiz edin, yaşam döngüsünü takip edin. KVKK uyumlu, Türkçe arayüz."
+  },
+  "landing": {
+    "heroBadge": "DocuSign alternatifi, yapay zekâ ile güçlendirilmiş",
+    "heroTitlePrefix": "Sözleşmeleriniz için",
+    "heroHighlight": "yapay zekâ destekli",
+    "heroTitleSuffix": "e-imza ve yaşam döngüsü yönetimi",
+    "heroSubtitle": "Belgelerinizi dijital olarak imzalayın, sözleşme risklerini otomatik analiz edin, yenileme takvimini takip edin. KVKK uyumlu, tamamen Türkçe.",
+    "featuresSectionTitle": "DocuSign'ı aşan üç mutasyon",
+    "featuresSectionSubtitle": "Dahili yapay zekâ, harici eklenti gerektirmez.",
+    "features": [
+      {
+        "icon": "Shield",
+        "title": "AI Sözleşme Risk Radarı",
+        "desc": "Yüklediğiniz sözleşmeleri yapay zekâ analiz eder, riskli maddeleri tespit eder ve alternatif öneriler sunar."
+      },
+      {
+        "icon": "Calendar",
+        "title": "Yaşam Döngüsü Takvimi",
+        "desc": "Tüm sözleşmelerinizin bitiş, yenileme ve ihbar sürelerini tek panelde görün. Otomatik hatırlatmalar alın."
+      },
+      {
+        "icon": "Lock",
+        "title": "KVKK Denetim Kasası",
+        "desc": "Her imza için değiştirilemez denetim izi: IP, zaman, cihaz, konum ve KVKK onay kaydı."
+      }
+    ],
+    "plans": [
+      {
+        "name": "Başlangıç",
+        "price": "Ücretsiz",
+        "period": "",
+        "highlight": false,
+        "items": [
+          "Aylık 5 belge",
+          "1 kullanıcı",
+          "Temel e-imza",
+          "E-posta desteği"
+        ]
+      },
+      {
+        "name": "Profesyonel",
+        "price": "₺399",
+        "period": "/ay",
+        "highlight": true,
+        "items": [
+          "Sınırsız belge",
+          "5 kullanıcı",
+          "AI Risk Radarı",
+          "Yaşam Döngüsü Takvimi",
+          "Şablon motoru",
+          "Öncelikli destek"
+        ]
+      },
+      {
+        "name": "İşletme",
+        "price": "₺999",
+        "period": "/ay",
+        "highlight": false,
+        "items": [
+          "Sınırsız kullanıcı",
+          "KVKK Denetim Kasası",
+          "API erişimi",
+          "SSO entegrasyonu",
+          "Özel SLA",
+          "Organizasyon yönetimi"
+        ]
+      }
+    ]
+  },
+  "sidebar": {
+    "primaryAction": "Yeni Belge",
+    "navItems": [
+      { "href": "/dashboard", "label": "Belgelerim", "icon": "FileText", "badge": false },
+      { "href": "/dashboard/inbox", "label": "Gelen Kutusu", "icon": "Inbox", "badge": true },
+      { "href": "/dashboard/templates", "label": "Şablonlar", "icon": "FolderOpen", "badge": false },
+      { "href": "/dashboard/calendar", "label": "Takvim", "icon": "Calendar", "badge": false },
+      { "href": "/dashboard/analytics", "label": "Analiz", "icon": "BarChart3", "badge": false }
+    ],
+    "bottomItems": [
+      { "href": "/dashboard/audit", "label": "Denetim Kasası", "icon": "Shield" },
+      { "href": "/dashboard/settings", "label": "Ayarlar", "icon": "Settings" }
+    ]
+  },
+  "workspace": {
+    "documentTitle": "Sözleşme İmza Merkezi",
+    "presenceText": "3 belge imza bekliyor…",
+    "paragraphs": [
+      "SignForge, belgelerinizi dijital ortamda güvenle imzalamanızı sağlayan yapay zekâ destekli bir platformdur.",
+      "Sözleşmelerinizi yükleyin, imza alanlarını yerleştirin ve imzacılara gönderin. AI Risk Radarı ile riskli maddeleri otomatik tespit edin."
+    ],
+    "codeSnippet": "POST /api/documents/:id/send\n{ \"signers\": [\"ahmet@firma.com\", \"ayse@firma.com\"] }",
+    "conflictInbox": {
+      "label": "Risk Uyarısı",
+      "summary": "Madde 7.2 — Tek taraflı fesih hakkı tespit edildi",
+      "severity": "Yüksek Risk",
+      "lines": ["M-7.2", "M-12.1"],
+      "actionLabel": "Alternatif Madde Öner"
+    },
+    "versions": [
+      {
+        "id": "v2.1.0",
+        "label": "v2.1.0 — Güncel",
+        "desc": "AI Risk Radarı eklendi.",
+        "author": "Ahmet Yılmaz",
+        "time": "2 saat önce",
+        "current": true
+      },
+      {
+        "id": "v2.0.0",
+        "label": "v2.0.0",
+        "desc": "KVKK denetim kasası entegrasyonu.",
+        "author": "Elif Kaya",
+        "time": "Dün",
+        "current": false
+      },
+      {
+        "id": "v1.0.0",
+        "label": "v1.0.0",
+        "desc": "İlk sürüm — temel e-imza.",
+        "author": "Sistem",
+        "time": "1 hafta önce",
+        "current": false
+      }
+    ]
+  },
+  "stitchScreens": {
+    "enabled": true,
+    "routes": [
+      { "match": "Workspace", "route": "frontend/src/app/dashboard/page.tsx" },
+      { "match": "Risk", "route": "frontend/src/app/dashboard/page.tsx" },
+      { "match": "Analytics", "route": "frontend/src/app/dashboard/analytics/page.tsx" },
+      { "match": "Renewal", "route": "frontend/src/app/dashboard/analytics/page.tsx" },
+      { "match": "Team", "route": "frontend/src/app/dashboard/settings/page.tsx" },
+      { "match": "KVKK", "route": "frontend/src/app/dashboard/settings/page.tsx" },
+      { "match": "Audit", "route": "frontend/src/app/dashboard/settings/page.tsx" },
+      { "match": "Landing", "route": "frontend/src/app/page.tsx" }
+    ]
+  }
+}

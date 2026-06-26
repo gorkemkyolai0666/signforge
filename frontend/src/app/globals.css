@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --primary: 359 56% 23%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 42 48% 58%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 20% 96%;
+    --muted-foreground: 48 7% 27%;
+    --accent: 42 48% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 152 58% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 42 48% 58%;
+    --warning-foreground: 222 47% 11%;
+    --border: 240 20% 90%;
+    --input: 0 0% 100%;
+    --ring: 359 56% 23%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 37 39% 94%;
+    --foreground: 193 17% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 193 17% 10%;
+    --primary: 359 56% 23%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 42 48% 58%;
+    --secondary-foreground: 216 60% 10%;
+    --muted: 0 0% 100%;
+    --muted-foreground: 48 7% 27%;
+    --accent: 42 48% 58%;
+    --accent-foreground: 216 60% 10%;
+    --border: 200 20% 22%;
+    --input: 0 0% 100%;
+    --ring: 359 56% 23%;
+  }
+
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body), 'Inter', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-body), 'Inter', system-ui, sans-serif;
+  }
+  .font-mono {
+    font-family: var(--font-mono), 'Jetbrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-xl border border-white/10 shadow-brand-glow backdrop-blur-md;
+    background: rgba(255, 255, 255, 0.72);
+  }
+  .surface-card {
+    @apply rounded-xl border border-white/10 shadow-brand-glow backdrop-blur-md transition-all duration-200 ease-in-out;
+    background: rgba(255, 255, 255, 0.72);
+  }
+  .forge-hero {
+    @apply relative overflow-hidden bg-background;
+    background-image:
+      radial-gradient(ellipse at 20% 30%, rgba(92, 26, 27, 0.18) 0%, transparent 52%),
+      radial-gradient(ellipse at 80% 70%, rgba(200, 169, 97, 0.12) 0%, transparent 48%);
+  }
+  .doc-page {
+    @apply mx-auto max-w-3xl rounded-xl border border-border bg-card p-10 shadow-brand-glow;
+  }
+  .conflict-inbox-card {
+    @apply rounded-xl border border-white/10 shadow-brand-glow backdrop-blur-md border-l-4 border-l-primary p-6;
+    background: rgba(255, 255, 255, 0.72);
+  }
+  .input-field {
+    @apply flex h-10 w-full rounded-lg border border-border bg-input px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-brand-glow transition-all duration-200 hover:opacity-90;
+  }
+  .surface-card-accent {
+    @apply rounded-xl border border-primary/40 shadow-brand-glow backdrop-blur-md ring-2 ring-primary/20 transition-all duration-200 ease-in-out;
+    background: rgba(255, 255, 255, 0.72);
+  }
+}
+/* === STITCH HTML STYLES (auto-generated) === */
+/* Stitch inline styles extracted from htmlCode */
+/* Workspace & Risk Radar */
+body {
+            background-color: #F5F0E8; /* primary-container */
+        }
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(92, 26, 27, 0.1);
+        }
+        .btn-primary {
+            background-color: #5C1A1B;
+            color: #FFFFFF;
+        }
+        .btn-secondary {
+            background-color: #C8A961;
+            color: #FFFFFF;
+        }
+        .btn-ghost {
+            background-color: transparent;
+            border: 1px solid #5C1A1B;
+            color: #5C1A1B;
+        }
+        .status-chip-bekliyor {
+            background-color: rgba(200, 169, 97, 0.1);
+            color: #C8A961;
+        }
+        .status-chip-imzalandi {
+            background-color: rgba(45, 80, 22, 0.1);
+            color: #2D5016;
+        }
+        .status-chip-reddedildi {
+            background-color: rgba(92, 26, 27, 0.1);
+            color: #5C1A1B;
+        }
+        .drag-zone {
+            border: 2px dashed rgba(92, 26, 27, 0.3);
+            transition: all 0.2s ease-in-out;
+        }
+        .drag-zone:hover {
+            border-color: #5C1A1B;
+            background-color: rgba(92, 26, 27, 0.05);
+        }
+
+/* Analytics & Renewal Radar */
+.material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        body { background-color: #F5F0E8; } /* Parchment warmth base */
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(92, 26, 27, 0.1);
+        }
+@keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(92, 26, 27, 0.4); }
+            70% { box-shadow: 0 0 0 4px rgba(92, 26, 27, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(92, 26, 27, 0); }
+        }
+        .pulse-slow { animation: pulse-border 3s infinite; }
+        .pulse-fast { animation: pulse-border 1.5s infinite; border-width: 2px; }
+
+/* Team & KVKK Audit Vault */
+body {
+            background-color: #f4fafd;
+        }
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+/* SignForge Landing Page */
+.material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(92, 26, 27, 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #5C1A1B 0%, #3a1011 100%);
+        }
+        .text-gold {
+            color: #C8A961;
+        }
+        .bg-gold {
+            background-color: #C8A961;
+        }
+        .border-gold {
+            border-color: #C8A961;
+        }
+        .border-burgundy {
+            border-color: #5C1A1B;
+        }
+
+.stitch-screen {
+  min-height: 100vh;
+  width: 100%;
+}
+.stitch-screen img {
+  max-width: 100%;
+  height: auto;
+}
+.stitch-page-content {
+  width: 100%;
+  min-height: 100%;
+  padding: 1.5rem;
+}
+.stitch-screen .px-gutter,
+.stitch-shell .px-gutter,
+.stitch-screen header.px-gutter {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.p-container-margin,
+.p-container-padding {
+  padding: 24px;
+}
+.stitch-shell nav a[data-stitch-nav] {
+  cursor: pointer;
+}
+.stitch-shell a[data-stitch-route],
+.stitch-screen a[data-stitch-route],
+.stitch-shell button[data-stitch-action],
+.stitch-screen button[data-stitch-action] {
+  cursor: pointer;
+}
+/* === END STITCH HTML STYLES === */

@@ -1,0 +1,211 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  name          String
+  role          UserRole  @default(USER)
+  department    String?
+  avatarUrl     String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  documents     Document[]
+  signatures    Signature[]
+  auditLogs     AuditLog[]
+  templates     Template[]
+  notifications Notification[]
+  apiKeys       ApiKey[]
+  organization  Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
+}
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  SIGNER
+  VIEWER
+  USER
+}
+
+model Organization {
+  id            String   @id @default(uuid())
+  name          String
+  kvkkConsent   Boolean  @default(false)
+  plan          PlanType @default(FREE)
+  maxUsers      Int      @default(1)
+  maxDocuments  Int      @default(5)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  users         User[]
+  documents     Document[]
+  templates     Template[]
+}
+
+enum PlanType {
+  FREE
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+model Document {
+  id              String         @id @default(uuid())
+  title           String
+  description     String?
+  fileUrl         String
+  fileType        String         @default("pdf")
+  status          DocumentStatus @default(DRAFT)
+  expiresAt       DateTime?
+  renewalDate     DateTime?
+  renewalReminder Boolean        @default(true)
+  riskScore       Float?
+  riskAnalysis    Json?
+  metadata        Json?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  owner           User           @relation(fields: [ownerId], references: [id])
+  ownerId         String
+  organization    Organization?  @relation(fields: [organizationId], references: [id])
+  organizationId  String?
+
+  signatures      Signature[]
+  signatureFields SignatureField[]
+  auditLogs       AuditLog[]
+  tags            DocumentTag[]
+}
+
+enum DocumentStatus {
+  DRAFT
+  PENDING
+  PARTIALLY_SIGNED
+  COMPLETED
+  REJECTED
+  EXPIRED
+  CANCELLED
+}
+
+model SignatureField {
+  id          String   @id @default(uuid())
+  documentId  String
+  document    Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  signerEmail String
+  signerName  String?
+  positionX   Float
+  positionY   Float
+  width       Float    @default(200)
+  height      Float    @default(60)
+  pageNumber  Int      @default(1)
+  fieldType   String   @default("signature")
+  required    Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Signature {
+  id          String          @id @default(uuid())
+  documentId  String
+  document    Document        @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  signerId    String?
+  signer      User?           @relation(fields: [signerId], references: [id])
+  signerEmail String
+  signerName  String?
+  status      SignatureStatus @default(PENDING)
+  signedAt    DateTime?
+  ipAddress   String?
+  userAgent   String?
+  geoLocation String?
+  kvkkConsent Boolean         @default(false)
+  signatureData String?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  auditLogs   AuditLog[]
+}
+
+enum SignatureStatus {
+  PENDING
+  SIGNED
+  REJECTED
+  EXPIRED
+}
+
+model Template {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  content     String
+  variables   Json?
+  category    String?
+  isPublic    Boolean  @default(false)
+  usageCount  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  owner       User     @relation(fields: [ownerId], references: [id])
+  ownerId     String
+  organization Organization? @relation(fields: [organizationId], references: [id])
+  organizationId String?
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  action      String
+  details     Json?
+  ipAddress   String?
+  userAgent   String?
+  geoLocation String?
+  kvkkConsent Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  user        User?     @relation(fields: [userId], references: [id])
+  userId      String?
+  document    Document? @relation(fields: [documentId], references: [id])
+  documentId  String?
+  signature   Signature? @relation(fields: [signatureId], references: [id])
+  signatureId String?
+}
+
+model DocumentTag {
+  id         String   @id @default(uuid())
+  name       String
+  documentId String
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@unique([name, documentId])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  type      String
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  data      Json?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+}
+
+model ApiKey {
+  id        String    @id @default(uuid())
+  name      String
+  key       String    @unique
+  lastUsed  DateTime?
+  expiresAt DateTime?
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now())
+
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String
+}

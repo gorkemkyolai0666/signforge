@@ -1,0 +1,26 @@
+{
+  "screens": [
+    {
+      "title": "Workspace & Risk Radar",
+      "slug": "workspace-risk-radar"
+    },
+    {
+      "title": "Analytics & Renewal Radar",
+      "slug": "analytics-renewal-radar"
+    },
+    {
+      "title": "Team & KVKK Audit Vault",
+      "slug": "team-kvkk-audit-vault"
+    },
+    {
+      "title": "SignForge Landing Page",
+      "slug": "signforge-landing-page"
+    }
+  ],
+  "routes": [
+    "frontend/src/app/dashboard/analytics/page.tsx",
+    "frontend/src/app/dashboard/page.tsx",
+    "frontend/src/app/dashboard/settings/page.tsx",
+    "frontend/src/app/page.tsx"
+  ]
+}
